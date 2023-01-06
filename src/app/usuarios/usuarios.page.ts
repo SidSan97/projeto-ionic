@@ -35,7 +35,7 @@ getData() {
       this.clientes = [];
       for(let i in a)
       {
-        console.log(a[i]);
+        console.log(a[i] + "nome: " + this.nome);
         this.clientes.push(a[i])
       }
 
@@ -56,7 +56,8 @@ getData() {
         nome : this.nome,
       };
 
-        this.provider.dadosApi(dados, 'http://localhost/api-ionic/index.php?q=listar').subscribe((data:any) => {
+        //this.provider.dadosApi(dados, 'http://localhost/api-ionic/index.php?q=busca&v=' + this.nome).subscribe((data:any) => {
+        this.http.get('http://localhost/api-ionic/index.php?q=busca&v=' + this.nome).subscribe((data:any) => {
 
         if(data['status'] == 200)
         {
@@ -67,6 +68,11 @@ getData() {
           {
             this.clientes.push(a[i])
           }
+        }
+        else
+        {
+          this.clientes.push(data['status']);
+          console.log('dados sem busca');
         }
 
       });
