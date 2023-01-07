@@ -62,7 +62,7 @@ export class AddUsuarioPage implements OnInit {
         senha: this.senha,
         nivel: this.nivel
       }
-      this.provider.dadosApi(dados, 'usuarios/inserir.php').subscribe(
+      this.provider.dadosApi(dados, 'index.php?q=cadastrar').subscribe(
         (data:any)=>{
           this.router.navigate(['usuarios']);
           //this.mensagemSucesso(data)
