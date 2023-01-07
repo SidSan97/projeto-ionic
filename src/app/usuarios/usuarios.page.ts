@@ -56,7 +56,6 @@ getData() {
         nome : this.nome,
       };
 
-        //this.provider.dadosApi(dados, 'http://localhost/api-ionic/index.php?q=busca&v=' + this.nome).subscribe((data:any) => {
         this.http.get('http://localhost/api-ionic/index.php?q=busca&v=' + this.nome).subscribe((data:any) => {
 
         if(data['status'] == 200)
@@ -77,6 +76,14 @@ getData() {
 
       });
     });
+  }
+
+  editar(id:number, nome:string, cpf:string, email:string, senha:string, nivel:string) {
+
+  }
+
+  mostrar(id:number, nome:string, cpf:string, email:string, senha:string, nivel:string) {
+    this.router.navigate(['mostrar-usuarios/' + id + '/' + nome + '/' + cpf + '/' + email + '/' + senha + '/' + nivel]);
   }
 
 }
