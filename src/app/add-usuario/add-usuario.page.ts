@@ -28,6 +28,12 @@ export class AddUsuarioPage implements OnInit {
   ngOnInit() {
     this.mensagemSucesso();
     this.actRouter.params.subscribe((data:any)=>{
+      this.id    = data.id;
+      this.nome  = data.nome;
+      this.email = data.email;
+      this.cpf   = data.cpf;
+      this.senha = data.senha;
+      this.nivel = data.nivel;
     });
   }
 

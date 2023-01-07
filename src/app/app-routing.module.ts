@@ -20,6 +20,10 @@ const routes: Routes = [
     loadChildren: () => import('./add-usuario/add-usuario.module').then( m => m.AddUsuarioPageModule)
   },
   {
+    path: 'add-usuario/:id/:nome/:cpf/:email/:senha/:nivel',
+    loadChildren: () => import('./add-usuario/add-usuario.module').then( m => m.AddUsuarioPageModule)
+  },
+  {
     path: 'mostrar-usuarios',
     loadChildren: () => import('./mostrar-usuarios/mostrar-usuarios.module').then( m => m.MostrarUsuariosPageModule)
   },

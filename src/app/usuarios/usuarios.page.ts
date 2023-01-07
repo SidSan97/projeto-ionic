@@ -79,7 +79,7 @@ getData() {
   }
 
   editar(id:number, nome:string, cpf:string, email:string, senha:string, nivel:string) {
-
+    this.router.navigate(['add-usuario/' + id + '/' + nome + '/' + cpf + '/' + email + '/' + senha + '/' + nivel]);
   }
 
   mostrar(id:number, nome:string, cpf:string, email:string, senha:string, nivel:string) {
