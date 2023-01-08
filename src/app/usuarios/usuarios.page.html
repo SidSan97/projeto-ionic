@@ -44,7 +44,22 @@
 
       <ion-item-options>
         <ion-item-option color="success" (click)="mostrar(item.id, item.nome, item.cpf, item.email, item.senha,item.nivel)">Mostrar</ion-item-option>
-        <ion-item-option color="danger">Delete</ion-item-option>
+        <ion-item-option color="danger" (click)="presentPopover($event)">Delete</ion-item-option>
+
+        <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false">
+          <ng-template>
+            <ion-content class="ion-padding">Deseja mesmo excluir esta conta?</ion-content>
+
+            <ion-button color="danger">
+              Sim
+            </ion-button>
+
+            <ion-button>
+              Não
+            </ion-button>
+          </ng-template>
+        </ion-popover>
+
       </ion-item-options>
     </ion-item-sliding>
 

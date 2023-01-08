@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-//import { resolve } from 'dns';
 import { Api } from 'src/services/api';
 
 @Component({
@@ -16,6 +15,15 @@ export class UsuariosPage implements OnInit {
   start : number = 0;
   nome  : string = "";
 
+  @ViewChild('popover') popover:any;
+
+  isOpen = false;
+
+  presentPopover(e: Event) {
+    this.popover.event = e;
+    this.isOpen = true;
+  }
+
   constructor(
     private router:Router,
     private provider:Api,
@@ -26,7 +34,6 @@ export class UsuariosPage implements OnInit {
   ngOnInit() {
     this.getData();
   }
-
 
 getData() {
     this.http.get('http://localhost/api-ionic/index.php?q=listar').subscribe((data:any) => {
@@ -84,6 +91,11 @@ getData() {
 
   mostrar(id:number, nome:string, cpf:string, email:string, senha:string, nivel:string) {
     this.router.navigate(['mostrar-usuarios/' + id + '/' + nome + '/' + cpf + '/' + email + '/' + senha + '/' + nivel]);
+  }
+
+  deletar(id:number)
+  {
+
   }
 
 }
