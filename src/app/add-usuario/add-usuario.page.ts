@@ -78,8 +78,22 @@ export class AddUsuarioPage implements OnInit {
 
   }
 
-  editar() {
-
+  editar(id:any, nome:string, cpf:string, email:string, senha:string, nivel:string) {
+    return new Promise(resolve => {
+      let dados = {
+        nome: nome,
+        cpf:  cpf,
+        email: email,
+        senha: senha,
+        nivel: nivel,
+        id: id
+      }
+      this.provider.dadosApi(dados, 'index.php?q=editar&v=' + id).subscribe(
+        (data:any)=>{
+          this.router.navigate(['usuarios']);
+        }
+      );
+    });
   }
 
 }

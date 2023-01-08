@@ -53,7 +53,7 @@
 
   <ion-list>
     <ion-item>
-      <ion-select [(ngModel)]="nivel" interface="popover" placeholder="Selecione nivel">
+      <ion-select [(ngModel)]="nivel" interface="popover" placeholder="Selecione nivel" required>
         <ion-select-option value=""></ion-select-option>
         <ion-select-option value="Admin">Administrador</ion-select-option>
         <ion-select-option value="Operador">Operador</ion-select-option>
@@ -66,7 +66,7 @@
     Salvar
   </ion-button>
 
-  <ion-button *ngIf="id" color="warning" expand="block" (click)="editar()">
+  <ion-button *ngIf="id" color="warning" expand="block" (click)="editar(id, nome, cpf, email, senha, nivel)">
     Editar
   </ion-button>
 </ion-content>
