@@ -16,10 +16,13 @@
 
 <ion-content>
 
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <ion-list>
 
     <ion-row class="azulClaro">
-
       <ion-input placeholder="Buscar Nome ou CPF" [(ngModel)]="nome" type="search" (ionChange)="carregar()"></ion-input>
 
       <ion-buttons (click)="carregar()">
@@ -54,7 +57,7 @@
               Sim
             </ion-button>
 
-            <ion-button>
+            <ion-button (click)="NoPresentPopover()">
               Não
             </ion-button>
           </ng-template>

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { Api } from 'src/services/api';
 
 @Component({
@@ -15,6 +16,18 @@ export class UsuariosPage implements OnInit {
   start : number = 0;
   nome  : string = "";
 
+  constructor(
+    private router:Router,
+    private provider:Api,
+    private actRouter:ActivatedRoute,
+    private http: HttpClient,
+    public toastController: ToastController
+    ) { }
+
+  ngOnInit() {
+    this.getData();
+  }
+
   @ViewChild('popover') popover:any;
 
   isOpen = false;
@@ -24,15 +37,51 @@ export class UsuariosPage implements OnInit {
     this.isOpen = true;
   }
 
-  constructor(
-    private router:Router,
-    private provider:Api,
-    private actRouter:ActivatedRoute,
-    private http: HttpClient
-    ) { }
+  NoPresentPopover() {
+    this.isOpen = false;
+  }
 
-  ngOnInit() {
-    this.getData();
+  handleRefresh(event:any) {
+    setTimeout(() => {
+      this.getData();
+      event.target.complete();
+    }, 2000);
+  };
+
+
+  async mensagemSucesso(codigo:number) {
+
+    if(codigo == 1) {
+      const toast = await this.toastController.create({
+        message: 'Sucesso ao excluir usuario',
+        duration: 2000,
+        color: 'success'
+      })
+      toast.present();
+    }
+  }
+
+  async mensagemErro(codigo:number) {
+
+    if(codigo == 1) {
+      const toast = await this.toastController.create({
+        message: 'Não há usuários com os dados informado',
+        duration: 5000,
+        color: 'danger'
+      })
+
+      toast.present();
+    }
+    else if(codigo == 2)
+    {
+      const toast = await this.toastController.create({
+        message: 'Erro ao excluir usuário',
+        duration: 2000,
+        color: 'danger'
+      })
+
+      toast.present();
+    }
   }
 
 getData() {
@@ -77,8 +126,9 @@ getData() {
         }
         else
         {
-          this.clientes.push(data['status']);
+          //this.clientes.push(data['status']);
           console.log('dados sem busca');
+          this.mensagemErro(1);
         }
 
       });
@@ -103,11 +153,13 @@ getData() {
         if(data['status'] == 200)
         {
           console.log('excluido com sucesso');
-          this.router.navigate(['add-usuario']);
+          this.router.navigate(['usuarios']);
+          this.mensagemSucesso(1);
         }
         else
         {
           console.log('erro ao excluir');
+          this.mensagemErro(2);
         }
 
       });
