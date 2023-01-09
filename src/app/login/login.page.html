@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+
+    <ion-input [(ngModel)]="usuario" placeholder="Informe seu CPF">
+      <ion-icon name="person-outline"></ion-icon>
+    </ion-input>
+
+  </ion-item>
+
+  <ion-item>
+
+    <ion-input [(ngModel)]="senha" type="password" placeholder="Informe sua senha">
+      <ion-icon name="lock-open-outline"></ion-icon>
+    </ion-input>
+
+  </ion-item>
+
+  <ion-button color="primary" expand="block" (click)="login()">
+    Logar
+  </ion-button>
+
+</ion-content>
