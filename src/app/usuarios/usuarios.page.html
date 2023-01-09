@@ -50,7 +50,7 @@
           <ng-template>
             <ion-content class="ion-padding">Deseja mesmo excluir esta conta?</ion-content>
 
-            <ion-button color="danger">
+            <ion-button color="danger" (click)="deletar(item.id)">
               Sim
             </ion-button>
 

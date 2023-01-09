@@ -95,7 +95,23 @@ getData() {
 
   deletar(id:number)
   {
+    return new Promise(resolve => {
+      this.clientes = [];
 
+        this.http.get('http://localhost/api-ionic/index.php?q=excluir&v=' + id).subscribe((data:any) => {
+
+        if(data['status'] == 200)
+        {
+          console.log('excluido com sucesso');
+          this.router.navigate(['add-usuario']);
+        }
+        else
+        {
+          console.log('erro ao excluir');
+        }
+
+      });
+    });
   }
 
 }

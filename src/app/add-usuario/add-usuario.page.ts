@@ -39,7 +39,7 @@ export class AddUsuarioPage implements OnInit {
 
   async mensagemSucesso() {
     const toast = await this.toastController.create({
-      message: 'Sucesso',
+      message: 'Sucesso ao criar usuario',
       duration: 2000,
       color: 'success'
     })
@@ -48,7 +48,7 @@ export class AddUsuarioPage implements OnInit {
 
   async mensagemErro() {
     const toast = await this.toastController.create({
-      message: 'Erro',
+      message: 'Erro ao criar usuario',
       duration: 2000,
       color: 'danger'
     })
@@ -70,8 +70,17 @@ export class AddUsuarioPage implements OnInit {
       }
       this.provider.dadosApi(dados, 'index.php?q=cadastrar').subscribe(
         (data:any)=>{
-          this.router.navigate(['usuarios']);
-          //this.mensagemSucesso(data)
+
+          if(data['status'] == 200)
+          {
+            this.router.navigate(['usuarios']);
+            this.mensagemSucesso();
+          }
+          else
+          {
+            this.router.navigate(['usuarios']);
+            this.mensagemErro();
+          }
         }
       );
     });
