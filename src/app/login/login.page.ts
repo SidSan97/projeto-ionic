@@ -54,7 +54,7 @@ export class LoginPage implements OnInit {
           if(data['status'] == 200)
           {
             let a = data.dados;
-            this.mensagemSucesso(a);
+            this.mensagemSucesso(a['nome']);
             this.router.navigate(['folder']);
           }
           else
