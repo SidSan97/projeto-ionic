@@ -1,9 +1,10 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay" *ngIf="url !== '/login' && url !== '/'">
+    <!--ion-menu contentId="main-content" type="overlay" *ngIf="url !== '/login' && url !== '/'"-->
+    <ion-menu contentId="main-content" type="overlay" >
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>Projeto API</ion-list-header>
+          <ion-list-header>Projeto Ionic</ion-list-header>
           <ion-note>sidnei.santiago@email.com</ion-note>
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">

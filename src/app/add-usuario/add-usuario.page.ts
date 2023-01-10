@@ -26,7 +26,6 @@ export class AddUsuarioPage implements OnInit {
     public toastController: ToastController) { }
 
   ngOnInit() {
-    this.mensagemSucesso();
     this.actRouter.params.subscribe((data:any)=>{
       this.id    = data.id;
       this.nome  = data.nome;

@@ -112,7 +112,8 @@ getData() {
         nome : this.nome,
       };
 
-        this.http.get('http://localhost/api-ionic/index.php?q=busca&v=' + this.nome).subscribe((data:any) => {
+        //this.http.get('http://localhost/api-ionic/index.php?q=busca&v=' + this.nome).subscribe((data:any) => {
+        this.http.get('https://testeapisidsan.000webhostapp.com/api-ionic/index.php?q=busca&v=' + this.nome).subscribe((data:any) => {
 
         if(data['status'] == 200)
         {
@@ -148,7 +149,8 @@ getData() {
     return new Promise(resolve => {
       this.clientes = [];
 
-        this.http.get('http://localhost/api-ionic/index.php?q=excluir&v=' + id).subscribe((data:any) => {
+        //this.http.get('http://localhost/api-ionic/index.php?q=excluir&v=' + id).subscribe((data:any) => {
+        this.http.get('https://testeapisidsan.000webhostapp.com/api-ionic/index.php?q=excluir&v=' + id).subscribe((data:any) => {
 
         if(data['status'] == 200)
         {

@@ -13,15 +13,15 @@ export class AppComponent {
 
   public appPages = [
     { title: 'Home', url: '/folder', icon: 'home' },
-    { title: 'Usuario', url: '/usuarios', icon: 'person-add' }/*,
-    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
+    { title: 'Usuario', url: '/usuarios', icon: 'person-add' },
+    { title: 'Testar Login', url: '/login', icon: 'log-in' }/*,
     { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
     { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
     { title: 'Spam', url: '/folder/Spam', icon: 'warning' },*/
   ];
   //public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor(private router: Router) {
-  
+
     //saber em qual url esta o APP
     router.events.subscribe(event => {
       if(event instanceof NavigationEnd) {
