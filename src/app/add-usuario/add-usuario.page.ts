@@ -59,7 +59,7 @@ export class AddUsuarioPage implements OnInit {
   }
 
   cadastrar() {
-    return new Promise(resolve => {
+
       let dados = {
         nome: this.nome,
         cpf:  this.cpf,
@@ -67,27 +67,29 @@ export class AddUsuarioPage implements OnInit {
         senha: this.senha,
         nivel: this.nivel
       }
-      this.provider.dadosApi(dados, 'index.php?q=cadastrar').subscribe(
+
+      this.provider.dadosApi(dados, 'index.php?q=cadastrar').then(
         (data:any)=>{
 
           if(data['status'] == 200)
           {
             this.router.navigate(['usuarios']);
+            console.log(data['dados']);
             this.mensagemSucesso();
           }
           else
           {
             this.router.navigate(['usuarios']);
+            console.log(data['dados']);
             this.mensagemErro();
           }
         }
-      );
-    });
+    );
 
   }
 
   editar(id:any, nome:string, cpf:string, email:string, senha:string, nivel:string) {
-    return new Promise(resolve => {
+    /*return new Promise(resolve => {
       let dados = {
         nome: nome,
         cpf:  cpf,
@@ -101,7 +103,7 @@ export class AddUsuarioPage implements OnInit {
           this.router.navigate(['usuarios']);
         }
       );
-    });
+    });*/
   }
 
 }

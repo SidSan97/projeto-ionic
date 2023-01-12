@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class Api {
-  //server: string = 'http://10.0.0.173/api-ionic/';
+  //server: string = 'http://localhost/api-ionic/';
   server: string = 'https://testeapisidsan.000webhostapp.com/api-ionic/';
 
   constructor(private http : HttpClient) {
@@ -17,6 +17,6 @@ export class Api {
     }
 
     let url = this.server + api;
-    return this.http.post(url, JSON.stringify(dados), httpOptions).map(res => res);
+    return this.http.post(url, JSON.stringify(dados), httpOptions)/*.map(res => res)*/ .toPromise();
   }
 }

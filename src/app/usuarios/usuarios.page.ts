@@ -85,6 +85,7 @@ export class UsuariosPage implements OnInit {
   }
 
 getData() {
+    //this.http.get('https://testeapisidsan.000webhostapp.com/api-ionic/index.php?q=listar').subscribe((data:any) => {
     this.http.get('http://localhost/api-ionic/index.php?q=listar').subscribe((data:any) => {
       let a = data.dados;
 

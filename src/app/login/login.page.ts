@@ -43,7 +43,7 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    return new Promise(resolve => {
+    /*return new Promise(resolve => {
       let dados = {
         usuario:  this.usuario,
         senha: this.senha,
@@ -63,7 +63,7 @@ export class LoginPage implements OnInit {
           }
         }
       );
-    });
+    });*/
 
   }
 
